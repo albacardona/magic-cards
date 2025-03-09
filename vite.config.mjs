@@ -9,6 +9,7 @@ export default defineConfig(() => {
     server: {
       port: 3000,
     },
+    base: '/magic-cards/',
     plugins: [
       react(),
       svgrPlugin(),
@@ -17,15 +18,12 @@ export default defineConfig(() => {
       }),
     ],
     build: {
-      outDir: 'build',
-      target: 'esnext',
-      sourcemap: true,
+      outDir: 'dist',
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, 'src'),
       },
     },
-    base: '/magic-cards',
   };
 });

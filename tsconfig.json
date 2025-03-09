@@ -4,11 +4,9 @@
     "incremental": true,
     "sourceMap": true,
     "inlineSources": true,
-    "sourceRoot": "/",
-    "allowJs": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
     "jsx": "react-jsx"
   }
