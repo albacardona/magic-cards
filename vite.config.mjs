@@ -8,6 +8,7 @@ export default defineConfig(() => {
   return {
     server: {
       port: 3000,
+      base: '/magic-cards',
       strictPort: true,
     },
     plugins: [

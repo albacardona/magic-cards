@@ -1,12 +1,14 @@
 {
   "name": "magic-cards",
-  "private": true,
+  "homepage": "https://albacardona.github.io/magic-cards/",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "predeploy": "bun run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tanstack/react-query": "4",
