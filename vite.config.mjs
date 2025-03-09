@@ -8,8 +8,6 @@ export default defineConfig(() => {
   return {
     server: {
       port: 3000,
-      base: '/magic-cards',
-      strictPort: true,
     },
     plugins: [
       react(),
@@ -28,5 +26,6 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    base: '/magic-cards',
   };
 });
