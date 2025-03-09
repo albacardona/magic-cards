@@ -1,0 +1,43 @@
+@import '../../variables';
+
+.navbar {
+  background-color: $bg-secondary-dark;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 20px;
+
+  .logo-container {
+    svg {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  .nav-links {
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .navbar {
+    background-color: $bg-secondary-light;
+    .logo-container {
+      svg {
+        stroke: $bg-primary-dark;
+        fill: $bg-primary-dark;
+      }
+
+    }
+  }
+}
