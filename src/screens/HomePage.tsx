@@ -1,9 +1,10 @@
 import { getCards } from '@/api/cardApi';
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../components/ui/Loader/Loader';
-import './HomePage.scss';
 import { Container } from '@/components/ui/Container/Container';
 import { Catalogue } from '@/components/Catalogue';
+import './HomePage.scss';
+import { Header } from '@/components/Header/Header';
 
 export const HomePage = () => {
   const { data: cardsData, isLoading } = useQuery({
@@ -18,10 +19,12 @@ export const HomePage = () => {
           <Loader size="large" />
         </div>
       ) : (
-        <>
-          <section className="presentation">Here we will display 3 random cards</section>
-          {cardsData && <Catalogue cards={cardsData} />}
-        </>
+        cardsData && (
+          <>
+            <Header cards={cardsData} />
+            <Catalogue cards={cardsData} />
+          </>
+        )
       )}
     </Container>
   );

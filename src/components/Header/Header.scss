@@ -1,0 +1,27 @@
+@use '../../variables' as *;
+
+.header-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex: 1 auto;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 42px;
+  }
+  .random-cards {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    .empty-card {
+      height: 400px;
+      width: 400px;
+      border-radius: 0.6rem;
+      border: 5px solid black;
+      background-color: $bg-primary-light;
+    }
+  }
+}

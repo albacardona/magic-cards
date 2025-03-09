@@ -1,6 +1,6 @@
 import type { Card } from '@/types/types';
+import { Collection } from './Collection/Collection';
 import { Container } from './ui/Container/Container';
-import { Collection } from './Collection';
 
 interface Props {
   cards: Card[];
@@ -8,7 +8,7 @@ interface Props {
 
 export const Catalogue = (props: Props) => {
   const { cards } = props;
-  console.log(cards);
+
   return (
     <Container>
       <div className="card-container">

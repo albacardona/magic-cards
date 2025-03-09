@@ -6,5 +6,5 @@ interface Props {
 }
 
 export const Loader = (props: Props) => {
-  return <MagicLogo className={`loader ${props.size}`} />;
+  return <MagicLogo className={`loader ${props.size ? props.size : 'large'}`} />;
 };

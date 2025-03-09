@@ -1,20 +1,21 @@
 import type { Card } from '@/types/types';
 import imageNotFound from '@/assets/image-not-found.png';
+import './CardItem.scss';
 
 interface Props {
   card: Card;
+  showCardName?: boolean;
 }
 
-export const CardItem = (props: Props) => {
-  const { card } = props;
+export const CardItem = ({ card, showCardName = true }: Props) => {
   return (
-    <div>
+    <div className="card">
       {card.imageUrl ? (
         <img src={card.imageUrl} alt={card.name} />
       ) : (
         <img src={imageNotFound} alt={card.name} />
       )}
-      <p>{card.name}</p>
+      {showCardName && <p>{card.name}</p>}
     </div>
   );
 };
