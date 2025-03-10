@@ -59,3 +59,8 @@ enum LegalityEnum {
   Legal = 'Legal',
   Restricted = 'Restricted',
 }
+
+export interface ErrorAPI {
+  status: number;
+  message: string;
+}

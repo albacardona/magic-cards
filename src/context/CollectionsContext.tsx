@@ -11,14 +11,6 @@ interface ContextTypes {
 
 const CollectionsContext = createContext<ContextTypes | undefined>(undefined);
 
-export const useCollections = () => {
-  const context = useContext(CollectionsContext);
-  if (!context) {
-    throw new Error('useCollections must be used in a CollectionsProvider');
-  }
-  return context;
-};
-
 export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
   const [collections, setCollections] = useState<Collection[]>([]);
 
@@ -72,4 +64,12 @@ export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
   );
 
   return <CollectionsContext.Provider value={value}>{children}</CollectionsContext.Provider>;
+};
+
+export const useCollections = () => {
+  const context = useContext(CollectionsContext);
+  if (!context) {
+    throw new Error('useCollections must be used in a CollectionsProvider');
+  }
+  return context;
 };

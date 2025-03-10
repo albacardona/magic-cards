@@ -1,17 +1,34 @@
 import { getCards } from '@/api/cardApi';
-import { useRandomCards } from '@/hooks/useRandomCards';
 import type { Card } from '@/types/types';
-import { useQuery } from '@tanstack/react-query';
 import { createContext, useContext, useMemo } from 'react';
+import { useQuery } from 'react-query';
 
 interface ContextTypes {
-  cards: Card[];
-  randomCards: Card[];
-  // isLoading: boolean;
-  // error: string;
+  cards: Card[] | undefined;
+  isLoading: boolean;
+  // error: ErrorAPI | undefined;
 }
 
 const CardsContext = createContext<ContextTypes | undefined>(undefined);
+
+export const CardsProvider = ({ children }: React.PropsWithChildren) => {
+  const { data, isLoading } = useQuery({
+    queryKey: [getCards.name],
+    queryFn: getCards,
+  });
+
+  const value = useMemo(
+    () =>
+      ({
+        cards: data,
+        isLoading,
+        // error,
+      }) satisfies ContextTypes,
+    [data, isLoading],
+  );
+
+  return <CardsContext.Provider value={value}>{children}</CardsContext.Provider>;
+};
 
 export const useCards = () => {
   const context = useContext(CardsContext);
@@ -19,26 +36,4 @@ export const useCards = () => {
     throw new Error('useCards must be used in a CardsProvider');
   }
   return context;
-};
-
-export const CardsProvider = ({ children }: React.PropsWithChildren) => {
-  const { data, isLoading } = useQuery({
-    queryKey: [getCards.name],
-    queryFn: getCards,
-    onError: (error) => console.log(error),
-  });
-
-  const { selectedCards } = useRandomCards({ cards: data, quantity: 3 });
-
-  const value = useMemo(
-    () => ({
-      cards: data,
-      randomCards: selectedCards,
-      // isLoading,
-      // error,
-    }),
-    [data, selectedCards],
-  );
-
-  return <CardsContext.Provider value={value}>{children}</CardsContext.Provider>;
 };

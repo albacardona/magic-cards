@@ -1,14 +1,14 @@
+import { useCards } from '@/context/CardsContext';
 import type { Card } from '@/types/types';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  cards: Card[] | undefined;
   quantity: number;
 }
 
-export const useRandomCards = (props: Props) => {
-  const { cards, quantity } = props;
-  const [selectedCards, setSelectedCards] = useState<Card[]>([]);
+export const useRandomCards = ({ quantity }: Props) => {
+  const { cards } = useCards();
+  const [randomCards, setRandomCards] = useState<Card[]>([]);
 
   useEffect(() => {
     const cardsWithImage = cards?.filter((card) => !!card.imageUrl);
@@ -22,9 +22,9 @@ export const useRandomCards = (props: Props) => {
         }
         selectedCards.push(newElem);
       }
-      setSelectedCards(selectedCards);
+      setRandomCards(selectedCards);
     }
   }, [cards, quantity]);
 
-  return { selectedCards };
+  return { randomCards };
 };

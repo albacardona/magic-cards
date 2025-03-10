@@ -1,0 +1,25 @@
+@use '../../variables' as *;
+
+.footer {
+  background-color: $bg-secondary-dark;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .footer {
+    background-color: $bg-secondary-light;
+    .logo {
+      svg {
+        stroke: $bg-primary-dark;
+        fill: $bg-primary-dark;
+      }
+    }
+  }
+}
