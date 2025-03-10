@@ -1,8 +1,16 @@
 .app {
-  height: auto;
-  min-height: 100dvh;
+  height: 100dvh;
+  max-height: 100dvh;
   width: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  h2 {
+    font-size: 62px;
+  }
+
+  h3 {
+    font-weight: 500;
+  }
 }

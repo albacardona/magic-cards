@@ -6,18 +6,21 @@ import { NotFound } from './screens/NotFound';
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import './App.scss';
+import { Container } from './components/ui/Container/Container';
 
 export const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/my-collections" element={<MyCollections />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Container>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/favourites" element={<Favourites />} />
+            <Route path="/my-collections" element={<MyCollections />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Container>
         <Footer />
       </div>
     </BrowserRouter>

@@ -11,7 +11,7 @@ export const ActionButtons = ({ actions }: Props) => {
     <div className="action-buttons">
       {actions?.map((action) => (
         <div key={action.id}>
-          <Button variant={action.variant} onClick={action.onClick} content={action.content} />
+          <Button variant={action.variant} onClick={action.onClick} icon={action.icon} />
         </div>
       ))}
     </div>

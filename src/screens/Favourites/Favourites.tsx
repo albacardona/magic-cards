@@ -1,7 +1,8 @@
 import { Collection } from '@/components/Collection/Collection';
-import { Container } from '@/components/ui/Container/Container';
 import { useCollections } from '@/context/CollectionsContext';
 import { useMemo } from 'react';
+import Add from '@/assets/icons/add.svg?react';
+import './Favourites.scss';
 
 export const Favourites = () => {
   const { collections } = useCollections();
@@ -12,13 +13,18 @@ export const Favourites = () => {
   );
 
   return (
-    <Container>
+    <div className="favourites-collection">
       <h2>Favourites</h2>
       {favouriteCollection ? (
         <Collection collection={favouriteCollection} />
       ) : (
-        <p>Your favourite collection is empty. Choose some cards to add to it!</p>
+        <div className="empty-favourites">
+          <h3>Your favourite collection is empty. Choose some cards to add to it!</h3>
+          <button type="button" className="add-button" onClick={() => console.log('add')}>
+            <Add className="add" />
+          </button>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };

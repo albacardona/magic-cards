@@ -7,14 +7,19 @@
   justify-content: center;
 }
 
-.main-content {
+.homepage-content {
   width: 100%;
+  max-width: 1260px;
   display: flex;
-  flex-direction: column;
+  row-gap: 24px;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
-  hr {
-    width: 100%;
-    border: 1px solid $bg-secondary-dark;
+  padding: 140px 0;
+
+  .random-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
   }
 }

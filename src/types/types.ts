@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react';
+
 export interface Collection {
   id: string;
   name: string;
@@ -66,10 +68,9 @@ export interface ErrorAPI {
 }
 
 export interface ButtonTypes {
-  content: string;
+  children: ReactElement;
   onClick: () => void;
   variant?: string;
-  size?: string;
 }
 
 export interface ActionButtonsTypes extends ButtonTypes {

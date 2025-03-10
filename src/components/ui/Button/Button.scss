@@ -3,7 +3,12 @@
 .button {
   width: 20px;
   height: 20px;
-  padding: 8px 12px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.button .empty {
+  background-color: transparent;
 }
 
 .button .primary {
