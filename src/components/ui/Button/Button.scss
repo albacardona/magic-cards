@@ -1,0 +1,20 @@
+@use '../../../variables' as *;
+
+.button {
+  width: 20px;
+  height: 20px;
+  padding: 8px 12px;
+}
+
+.button .primary {
+  background-color: $bg-accent-light;
+}
+.button .success {
+  background-color: $text-success-light;
+}
+.button .danger {
+  background-color: $text-danger-light;
+}
+.button .warning {
+  background-color: $text-warning-light;
+}

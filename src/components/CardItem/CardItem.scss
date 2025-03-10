@@ -1,10 +1,11 @@
-.card {
-  width: auto;
-  height: auto;
-  img {
-    width: auto;
-    border-radius: 0.6rem;
-    max-height: 250px;
-    height: auto;
+.card-container {
+  position: relative;
+  .card {
+    img {
+      width: auto;
+      border-radius: 0.6rem;
+      max-height: 250px;
+      height: auto;
+    }
   }
 }

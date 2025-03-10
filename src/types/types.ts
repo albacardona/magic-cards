@@ -64,3 +64,14 @@ export interface ErrorAPI {
   status: number;
   message: string;
 }
+
+export interface ButtonTypes {
+  content: string;
+  onClick: () => void;
+  variant?: string;
+  size?: string;
+}
+
+export interface ActionButtonsTypes extends ButtonTypes {
+  id: number;
+}
