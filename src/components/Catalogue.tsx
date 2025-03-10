@@ -1,13 +1,9 @@
-import type { Card } from '@/types/types';
 import { Collection } from './Collection/Collection';
 import { Container } from './ui/Container/Container';
+import { useCards } from '@/context/CardsContext';
 
-interface Props {
-  cards: Card[];
-}
-
-export const Catalogue = (props: Props) => {
-  const { cards } = props;
+export const Catalogue = () => {
+  const { cards } = useCards();
 
   return (
     <Container>

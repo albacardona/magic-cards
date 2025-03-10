@@ -1,3 +1,10 @@
+export interface Collection {
+  id: string;
+  name: string;
+  cards: Card[];
+  isFavourite: boolean;
+}
+
 export interface Card {
   name: string;
   manaCost: string;
@@ -27,7 +34,7 @@ export interface Card {
   id: string;
 }
 
-export interface ForeignName {
+interface ForeignName {
   name: string;
   text: string;
   type: string;
@@ -38,17 +45,17 @@ export interface ForeignName {
   multiverseid: number;
 }
 
-export interface Identifiers {
+interface Identifiers {
   scryfallId: string;
   multiverseId: number;
 }
 
-export interface LegalityElement {
+interface LegalityElement {
   format: string;
   legality: LegalityEnum;
 }
 
-export enum LegalityEnum {
+enum LegalityEnum {
   Legal = 'Legal',
   Restricted = 'Restricted',
 }

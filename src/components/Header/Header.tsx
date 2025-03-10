@@ -1,16 +1,9 @@
-import type { Card } from '@/types/types';
-import { useRandomCards } from '@/hooks/useRandomCards';
 import './Header.scss';
 import { CardItem } from '../CardItem/CardItem';
+import { useCards } from '@/context/CardsContext';
 
-interface Props {
-  cards: Card[];
-}
-
-export const Header = (props: Props) => {
-  const { cards } = props;
-
-  const { selectedCards } = useRandomCards({ cards, quantity: 3 });
+export const Header = () => {
+  const { randomCards } = useCards();
 
   return (
     <>
@@ -20,10 +13,8 @@ export const Header = (props: Props) => {
           <p>Check the catalogue, save your favourite cards and create your own collections.</p>
         </div>
         <div className="random-cards">
-          {selectedCards.length > 0 &&
-            selectedCards.map((card) => (
-              <CardItem key={card.id} card={card} showCardName={false} />
-            ))}
+          {randomCards.length > 0 &&
+            randomCards.map((card) => <CardItem key={card.id} card={card} showCardName={false} />)}
         </div>
       </div>
       <hr />

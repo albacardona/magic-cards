@@ -1,5 +1,5 @@
 import type { Card } from '@/types/types';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Props {
   cards: Card[] | undefined;
@@ -10,7 +10,7 @@ export const useRandomCards = (props: Props) => {
   const { cards, quantity } = props;
   const [selectedCards, setSelectedCards] = useState<Card[]>([]);
 
-  const getRandomCards = useCallback(() => {
+  useEffect(() => {
     const cardsWithImage = cards?.filter((card) => !!card.imageUrl);
     const selectedCards: Card[] = [];
 
@@ -25,10 +25,6 @@ export const useRandomCards = (props: Props) => {
       setSelectedCards(selectedCards);
     }
   }, [cards, quantity]);
-
-  useEffect(() => {
-    getRandomCards();
-  }, [getRandomCards]);
 
   return { selectedCards };
 };
