@@ -14,6 +14,7 @@ export const CardsProvider = ({ children }: React.PropsWithChildren) => {
   const { data, isLoading } = useQuery({
     queryKey: [getCards.name],
     queryFn: getCards,
+    onError: (error) => console.log(error),
   });
 
   const value = useMemo(

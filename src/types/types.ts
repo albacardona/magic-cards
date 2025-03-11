@@ -73,6 +73,8 @@ export interface ButtonTypes {
   className?: string;
 }
 
-export interface ActionButtonsTypes extends ButtonTypes {
-  id: number;
+export interface CardActions {
+  id: string;
+  onClick: (collectionId: string, card: Card) => void;
+  button: ReactElement;
 }

@@ -1,5 +1,5 @@
 import type { Card, Collection } from '@/types/types';
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 interface ContextTypes {
   collections: Collection[];
@@ -9,10 +9,24 @@ interface ContextTypes {
   deleteCollection: (collectionId: string) => void;
 }
 
+const INITIAL_STATE: Collection[] = [
+  {
+    id: '1',
+    name: 'Favourites',
+    cards: [],
+    isFavourite: true,
+  },
+];
+
+const getPersistedState = () => {
+  const collections = localStorage.getItem('collections');
+  return collections ? JSON.parse(collections) : INITIAL_STATE;
+};
+
 const CollectionsContext = createContext<ContextTypes | undefined>(undefined);
 
 export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
-  const [collections, setCollections] = useState<Collection[]>([]);
+  const [collections, setCollections] = useState<Collection[]>(getPersistedState);
 
   const addCollection = useCallback(
     (name: string, isFavourite: boolean) => {
@@ -21,17 +35,15 @@ export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
     [collections],
   );
 
-  const addCardToCollection = useCallback(
-    (collectionId: string, card: Card) => {
-      const selectedCollection = collections.map((collection) =>
+  const addCardToCollection = useCallback((collectionId: string, card: Card) => {
+    setCollections((prevCollections) =>
+      prevCollections.map((collection) =>
         collection.id === collectionId
           ? { ...collection, cards: [...collection.cards, card] }
           : collection,
-      );
-      setCollections(selectedCollection);
-    },
-    [collections],
-  );
+      ),
+    );
+  }, []);
 
   const removeCardFromCollection = useCallback(
     (collectionId: string, cardId: string) => {
@@ -51,6 +63,10 @@ export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
     },
     [collections],
   );
+
+  useEffect(() => {
+    localStorage.setItem('collections', JSON.stringify(collections));
+  }, [collections]);
 
   const value = useMemo(
     () => ({
