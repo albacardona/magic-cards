@@ -68,9 +68,9 @@ export interface ErrorAPI {
 }
 
 export interface ButtonTypes {
-  children: ReactElement;
+  children: ReactElement | string;
   onClick: () => void;
-  variant?: string;
+  className?: string;
 }
 
 export interface ActionButtonsTypes extends ButtonTypes {

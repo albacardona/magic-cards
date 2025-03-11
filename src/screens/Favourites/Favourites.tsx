@@ -2,15 +2,26 @@ import { Collection } from '@/components/Collection/Collection';
 import { useCollections } from '@/context/CollectionsContext';
 import { useMemo } from 'react';
 import Add from '@/assets/icons/add.svg?react';
+
 import './Favourites.scss';
+import { useModal } from '@/context/ModalContext';
+import { Button } from '@/components/ui/Button/Button';
 
 export const Favourites = () => {
   const { collections } = useCollections();
+  const modal = useModal();
 
   const favouriteCollection = useMemo(
     () => collections.filter((collection) => collection.isFavourite)[0],
     [collections],
   );
+
+  const onAddFavourites = () => {
+    modal.showModal({
+      title: 'My favourites cards',
+      content: "I don't have them",
+    });
+  };
 
   return (
     <div className="favourites-collection">
@@ -20,9 +31,9 @@ export const Favourites = () => {
       ) : (
         <div className="empty-favourites">
           <h3>Your favourite collection is empty. Choose some cards to add to it!</h3>
-          <button type="button" className="add-button" onClick={() => console.log('add')}>
+          <Button className="add-button" onClick={onAddFavourites}>
             <Add className="add" />
-          </button>
+          </Button>
         </div>
       )}
     </div>

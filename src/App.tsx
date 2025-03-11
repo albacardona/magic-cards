@@ -7,11 +7,13 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
 import './App.scss';
 import { Container } from './components/ui/Container/Container';
+import { Modal } from './components/ui/Modal/Modal';
 
 export const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
+        <Modal />
         <Navbar />
         <Container>
           <Routes>

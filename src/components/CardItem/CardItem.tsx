@@ -8,30 +8,8 @@ interface Props {
 }
 
 export const CardItem = ({ card, showCardName = true }: Props) => {
-  // const actions = [
-  //   {
-  //     id: 1,
-  //     onClick: () => console.log('Confirm'),
-  //     icon: 'Confirm',
-  //     variant: 'primary',
-  //   },
-  //   {
-  //     id: 2,
-  //     onClick: () => console.log('Cancel'),
-  //     icon: 'Cancel',
-  //     variant: 'danger',
-  //   },
-  //   {
-  //     id: 3,
-  //     onClick: () => console.log('Edit'),
-  //     icon: 'Edit',
-  //     variant: 'warning',
-  //   },
-  // ];
-
   return (
     <div className="card-container">
-      {/* <ActionButtons actions={actions} /> */}
       <div className="card">
         {card.imageUrl ? (
           <img src={card.imageUrl} alt={card.name} />

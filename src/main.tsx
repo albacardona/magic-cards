@@ -5,6 +5,7 @@ import './index.css';
 import { CardsProvider } from './context/CardsContext';
 import { CollectionsProvider } from './context/CollectionsContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ModalProvider } from './context/ModalContext';
 
 const container = document.getElementById('root');
 const root = createRoot(container as HTMLElement);
@@ -13,10 +14,12 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <CardsProvider>
-      <CollectionsProvider>
-        <App />
-      </CollectionsProvider>
-    </CardsProvider>
+    <ModalProvider>
+      <CardsProvider>
+        <CollectionsProvider>
+          <App />
+        </CollectionsProvider>
+      </CardsProvider>
+    </ModalProvider>
   </QueryClientProvider>,
 );

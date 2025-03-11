@@ -1,0 +1,24 @@
+@use '../../../variables' as *;
+
+.modal {
+  position: absolute;
+  top: 0;
+  height: 100dvh;
+  width: 100dvw;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  .modal-content {
+    max-width: calc(100% - 100px);
+    max-height: calc(100% - 150px);
+    background-color: $bg-secondary-dark;
+    border-radius: 12px;
+    padding: 16px 24px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
