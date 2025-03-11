@@ -1,4 +1,4 @@
-import { useCards } from '@/context/CardsContext';
+import { useCards } from '@/context/cards-context';
 import type { Card } from '@/types/types';
 import { useEffect, useState } from 'react';
 

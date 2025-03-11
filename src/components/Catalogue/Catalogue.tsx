@@ -1,4 +1,4 @@
-import { useCards } from '@/context/CardsContext';
+import { useCards } from '@/context/cards-context';
 import './Catalogue.scss';
 import { CardItem } from '../CardItem/CardItem';
 

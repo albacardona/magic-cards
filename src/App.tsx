@@ -5,15 +5,13 @@ import { MyCollections } from './screens/MyCollections/MyCollections';
 import { NotFound } from './screens/NotFound';
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
-import './App.scss';
 import { Container } from './components/ui/Container/Container';
-import { Modal } from './components/ui/Modal/Modal';
+import './App.scss';
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <div className="app">
-        <Modal />
+      <main className="app">
         <Navbar />
         <Container>
           <Routes>
@@ -24,7 +22,7 @@ export const App = () => {
           </Routes>
         </Container>
         <Footer />
-      </div>
+      </main>
     </BrowserRouter>
   );
 };

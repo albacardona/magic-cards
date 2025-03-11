@@ -6,7 +6,6 @@ import { useQuery } from 'react-query';
 interface ContextTypes {
   cards: Card[] | undefined;
   isLoading: boolean;
-  // error: ErrorAPI | undefined;
 }
 
 const CardsContext = createContext<ContextTypes | undefined>(undefined);
@@ -22,7 +21,6 @@ export const CardsProvider = ({ children }: React.PropsWithChildren) => {
       ({
         cards: data,
         isLoading,
-        // error,
       }) satisfies ContextTypes,
     [data, isLoading],
   );

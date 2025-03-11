@@ -2,10 +2,10 @@ import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import './index.css';
 
-import { CardsProvider } from './context/CardsContext';
-import { CollectionsProvider } from './context/CollectionsContext';
+import { CardsProvider } from './context/cards-context';
+import { CollectionsProvider } from './context/collections-context';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ModalProvider } from './context/ModalContext';
+import { ModalProvider } from './context/modal-context';
 
 const container = document.getElementById('root');
 const root = createRoot(container as HTMLElement);
@@ -14,12 +14,12 @@ const queryClient = new QueryClient();
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <ModalProvider>
-      <CardsProvider>
-        <CollectionsProvider>
+    <CardsProvider>
+      <CollectionsProvider>
+        <ModalProvider>
           <App />
-        </CollectionsProvider>
-      </CardsProvider>
-    </ModalProvider>
+        </ModalProvider>
+      </CollectionsProvider>
+    </CardsProvider>
   </QueryClientProvider>,
 );

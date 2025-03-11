@@ -1,10 +1,11 @@
 import { Collection } from '@/components/Collection/Collection';
-import { useCollections } from '@/context/CollectionsContext';
+import { useCollections } from '@/context/collections-context';
 import { useMemo } from 'react';
 import Add from '@/assets/icons/add.svg?react';
-import './MyCollections.scss';
-import { useModal } from '@/context/ModalContext';
+import { useModal } from '@/context/modal-context';
 import { Button } from '@/components/ui/Button/Button';
+import { Catalogue } from '@/components/Catalogue/Catalogue';
+import './MyCollections.scss';
 
 export const MyCollections = () => {
   const { collections } = useCollections();
@@ -17,8 +18,8 @@ export const MyCollections = () => {
 
   const onAddCollection = () => {
     modal.showModal({
-      title: 'Name of your collection',
-      content: 'Whatever',
+      title: 'My favourites cards',
+      content: <Catalogue />,
     });
   };
 

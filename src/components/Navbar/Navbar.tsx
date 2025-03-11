@@ -14,7 +14,7 @@ export const Navbar = () => {
             <NavLink to="/favourites">Favourites</NavLink>
           </li>
           <li>
-            <NavLink to="/my-collections">My colections</NavLink>
+            <NavLink to="/my-collections">My collections</NavLink>
           </li>
         </ul>
       </div>

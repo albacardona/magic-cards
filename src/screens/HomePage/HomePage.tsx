@@ -1,8 +1,8 @@
-import './HomePage.scss';
-import { useCards } from '@/context/CardsContext';
+import { useCards } from '@/context/cards-context';
 import { useRandomCards } from '@/hooks/useRandomCards';
 import { CardItem } from '@/components/CardItem/CardItem';
 import { Loader } from '@/components/ui/Loader/Loader';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const { isLoading } = useCards();

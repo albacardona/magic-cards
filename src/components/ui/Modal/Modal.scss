@@ -1,6 +1,6 @@
 @use '../../../variables' as *;
 
-.modal {
+.modal-overlay {
   position: absolute;
   top: 0;
   height: 100dvh;
@@ -10,15 +10,30 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
+
   .modal-content {
     max-width: calc(100% - 100px);
     max-height: calc(100% - 150px);
     background-color: $bg-secondary-dark;
+    border: 1px solid $bg-primary-light;
     border-radius: 12px;
     padding: 16px 24px;
     overflow: scroll;
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      h4 {
+        font-size: 24px;
+      }
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke: $bg-primary-light;
+      }
+    }
   }
 }
