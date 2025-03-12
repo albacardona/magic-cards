@@ -5,6 +5,7 @@ import Add from '@/assets/icons/add.svg?react';
 import { useModal } from '@/context/modal-context';
 import { Button } from '@/components/ui/Button/Button';
 import './MyCollections.scss';
+import { NewCollection } from './MyCollectionsNewCollection';
 
 export const MyCollections = () => {
   const { collections } = useCollections();
@@ -18,8 +19,7 @@ export const MyCollections = () => {
   const onAddCollection = () => {
     modal.showModal({
       description: 'Enter the name for your new collection',
-      // biome-ignore lint/a11y/noAutofocus: <explanation>
-      content: <input type="text" autoFocus />,
+      content: <NewCollection />,
     });
   };
 

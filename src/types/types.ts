@@ -5,7 +5,6 @@ export interface Collection {
   name: string;
   cards: Card[];
   isFavourite: boolean;
-  isCatalogue: boolean;
 }
 
 export interface Card {

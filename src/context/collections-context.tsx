@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 
 interface ContextTypes {
   collections: Collection[];
-  addCollection: (name: string, isFavourite: boolean) => void;
+  addCollection: (name: string) => void;
   addCardToCollection: (collectionId: string, card: Card) => void;
   removeCardFromCollection: (collectionId: string, card: Card) => void;
   deleteCollection: (collectionId: string) => void;
@@ -15,7 +15,6 @@ const INITIAL_STATE: Collection[] = [
     name: 'Favourites',
     cards: [],
     isFavourite: true,
-    isCatalogue: false,
   },
 ];
 
@@ -30,10 +29,10 @@ export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
   const [collections, setCollections] = useState<Collection[]>(getPersistedState);
 
   const addCollection = useCallback(
-    (name: string, isFavourite: boolean) => {
+    (name: string) => {
       setCollections([
         ...collections,
-        { id: crypto.randomUUID(), name, cards: [], isFavourite, isCatalogue: false },
+        { id: crypto.randomUUID(), name, cards: [], isFavourite: false },
       ]);
     },
     [collections],
