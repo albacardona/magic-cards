@@ -13,12 +13,14 @@ export const Modal = forwardRef<HTMLDivElement>((_, ref) => {
     <div className="modal-overlay">
       <div ref={ref} className="modal-content">
         <div className="modal-header">
-          <h4>{modalData?.title}</h4>
+          <div>
+            <h4>{modalData?.title}</h4>
+            <p>{modalData?.description}</p>
+          </div>
           <Button onClick={closeModal}>
             <Close />
           </Button>
         </div>
-        <p>{modalData?.description}</p>
         {modalData?.content}
       </div>
     </div>

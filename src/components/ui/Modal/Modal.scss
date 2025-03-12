@@ -25,7 +25,9 @@
 
     .modal-header {
       display: flex;
+      align-items: flex-start;
       justify-content: space-between;
+      gap: 24px;
       h4 {
         font-size: 24px;
       }
@@ -34,6 +36,22 @@
         height: 24px;
         stroke: $bg-primary-light;
       }
+    }
+    input {
+      height: 40px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: $text-primary-dark;
+      background-color: $bg-primary-dark;
+      outline: none;
+      border: none;
+      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(52,52,52,1);
+      -moz-box-shadow: inset 0px 0px 5px 0px rgba(52,52,52,1);
+      box-shadow: inset 0px 0px 5px 0px rgba(52,52,52,1);
+      font-size: 16px;
+    }
+    input:focus {
+      border: 2px solid #555;
     }
   }
 }
