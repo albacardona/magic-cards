@@ -5,7 +5,7 @@ interface ContextTypes {
   collections: Collection[];
   addCollection: (name: string, isFavourite: boolean) => void;
   addCardToCollection: (collectionId: string, card: Card) => void;
-  removeCardFromCollection: (collectionId: string, cardId: string) => void;
+  removeCardFromCollection: (collectionId: string, card: Card) => void;
   deleteCollection: (collectionId: string) => void;
 }
 
@@ -15,6 +15,7 @@ const INITIAL_STATE: Collection[] = [
     name: 'Favourites',
     cards: [],
     isFavourite: true,
+    isCatalogue: false,
   },
 ];
 
@@ -30,7 +31,10 @@ export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
 
   const addCollection = useCallback(
     (name: string, isFavourite: boolean) => {
-      setCollections([...collections, { id: crypto.randomUUID(), name, cards: [], isFavourite }]);
+      setCollections([
+        ...collections,
+        { id: crypto.randomUUID(), name, cards: [], isFavourite, isCatalogue: false },
+      ]);
     },
     [collections],
   );
@@ -46,10 +50,13 @@ export const CollectionsProvider = ({ children }: React.PropsWithChildren) => {
   }, []);
 
   const removeCardFromCollection = useCallback(
-    (collectionId: string, cardId: string) => {
+    (collectionId: string, card: Card) => {
       const selectedCollection = collections.map((collection) =>
         collection.id === collectionId
-          ? { ...collection, cards: collection.cards.filter((card) => card.id !== cardId) }
+          ? {
+              ...collection,
+              cards: collection.cards?.filter((existingCard) => existingCard.id !== card.id),
+            }
           : collection,
       );
       setCollections(selectedCollection);

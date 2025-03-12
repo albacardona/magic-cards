@@ -1,9 +1,10 @@
 .container {
   height: 100%;
   width: 100%;
-  padding: 12px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: scroll;
 }

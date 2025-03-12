@@ -1,8 +1,16 @@
-.cards-container {
-  width: 100%;
-  max-width: 1180px;
+.collection {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px;
+  flex-direction: column;
+  gap: 32px;
+
+  .cards-container {
+    max-height: 100%;
+    width: 100%;
+    max-width: 1180px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 40px;
+  }
 }

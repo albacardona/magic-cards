@@ -5,6 +5,7 @@ export interface Collection {
   name: string;
   cards: Card[];
   isFavourite: boolean;
+  isCatalogue: boolean;
 }
 
 export interface Card {
@@ -73,8 +74,7 @@ export interface ButtonTypes {
   className?: string;
 }
 
-export interface CardActions {
-  id: string;
-  onClick: (collectionId: string, card: Card) => void;
-  button: ReactElement;
+export interface CardAction {
+  onClick: (card: Card) => void;
+  icon: ReactElement;
 }

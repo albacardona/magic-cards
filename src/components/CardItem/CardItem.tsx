@@ -1,39 +1,18 @@
-import type { Card, CardActions } from '@/types/types';
+import type { Card, CardAction } from '@/types/types';
 import imageNotFound from '@/assets/image-not-found.png';
 import './CardItem.scss';
-
 import { Button } from '../ui/Button/Button';
-import { useCollections } from '@/context/collections-context';
-import { useMemo } from 'react';
 
 interface Props {
   card: Card;
   showCardName?: boolean;
-  cardActions?: CardActions[];
-  collectionId: string;
+  cardAction?: CardAction;
 }
 
-export const CardItem = ({ card, showCardName = true, cardActions, collectionId }: Props) => {
-  const { collections } = useCollections();
-
-  const currentCollection = useMemo(
-    () => collections.filter((collection) => collectionId === collection.id)[0],
-    [collections, collectionId],
-  );
-
-  const isCardAlreadyInCollection = useMemo(
-    () => currentCollection?.cards.find((currentCard) => card.id === currentCard.id),
-    [currentCollection, card],
-  );
-
+export const CardItem = ({ card, showCardName = true, cardAction }: Props) => {
   return (
     <div className="card-container">
-      {!isCardAlreadyInCollection &&
-        cardActions?.map((action) => (
-          <Button key={action.id} onClick={() => action.onClick(collectionId, card)}>
-            {action.button}
-          </Button>
-        ))}
+      {cardAction && <Button onClick={() => cardAction.onClick(card)}>{cardAction.icon}</Button>}
       <div className="card">
         {card.imageUrl ? (
           <img src={card.imageUrl} alt={card.name} />

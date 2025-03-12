@@ -19,7 +19,7 @@ interface ContextTypes {
 }
 
 interface ModalData {
-  title: string;
+  title?: string;
   description?: string;
   content: ReactElement;
 }

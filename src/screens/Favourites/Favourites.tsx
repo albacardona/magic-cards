@@ -1,4 +1,3 @@
-import { Collection } from '@/components/Collection/Collection';
 import { useCollections } from '@/context/collections-context';
 import { useMemo } from 'react';
 import Add from '@/assets/icons/add.svg?react';
@@ -6,9 +5,10 @@ import { useModal } from '@/context/modal-context';
 import { Button } from '@/components/ui/Button/Button';
 import { Catalogue } from '@/components/Catalogue/Catalogue';
 import './Favourites.scss';
+import { Collection } from '@/components/Collection/Collection';
 
 export const Favourites = () => {
-  const { collections, addCardToCollection } = useCollections();
+  const { collections } = useCollections();
   const modal = useModal();
 
   const favouriteCollection = useMemo(
@@ -16,21 +16,10 @@ export const Favourites = () => {
     [collections],
   );
 
-  const cardActions = useMemo(
-    () => [
-      {
-        id: '1',
-        onClick: addCardToCollection,
-        button: <Add />,
-      },
-    ],
-    [addCardToCollection],
-  );
-
   const onAddFavourites = () => {
     modal.showModal({
       title: 'My favourites cards',
-      content: <Catalogue cardActions={cardActions} collectionId={favouriteCollection.id} />,
+      content: <Catalogue collectionId={favouriteCollection.id} />,
     });
   };
 
