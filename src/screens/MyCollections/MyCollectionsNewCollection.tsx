@@ -21,17 +21,23 @@ export const NewCollection = () => {
     }
   };
 
-  const handleClickConfirm = () => {
+  const handleConfirm = () => {
     addCollection(collectionName);
     modal.closeModal();
+  };
+
+  const handleButtonPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleConfirm();
+    }
   };
 
   return (
     <div className="new-collection">
       {/* biome-ignore lint/a11y/noAutofocus: <explanation> */}
-      <input type="text" onChange={handleChangeInput} autoFocus />
+      <input type="text" onChange={handleChangeInput} onKeyDown={handleButtonPress} autoFocus />
       {isDirty && (
-        <Button onClick={handleClickConfirm}>
+        <Button onClick={handleConfirm}>
           <Confirm />
         </Button>
       )}

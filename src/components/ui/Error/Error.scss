@@ -1,0 +1,21 @@
+@use '../../../variables' as *;
+
+.error-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 80px;
+  .logo {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .logo {
+    stroke: $text-primary-light;
+    fill: $text-primary-light;
+  }
+}

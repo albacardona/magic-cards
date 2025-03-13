@@ -62,11 +62,6 @@ enum LegalityEnum {
   Restricted = 'Restricted',
 }
 
-export interface ErrorAPI {
-  status: number;
-  message: string;
-}
-
 export interface ButtonTypes {
   children: ReactElement | string;
   onClick: () => void;

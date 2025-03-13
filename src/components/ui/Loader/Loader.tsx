@@ -5,6 +5,10 @@ interface Props {
   size?: string;
 }
 
-export const Loader = (props: Props) => {
-  return <MagicLogo className={`loader ${props.size ? props.size : 'large'}`} />;
+export const Loader = ({ size }: Props) => {
+  return (
+    <div className="loader-container">
+      <MagicLogo className={`loader ${size ?? 'large'}`} />
+    </div>
+  );
 };

@@ -1,10 +1,12 @@
-import { useCards } from '@/context/cards-context';
 import './Catalogue.scss';
 import { CardItem } from '../CardItem/CardItem';
 import type { Card } from '@/types/types';
 import { useMemo } from 'react';
 import { useCollections } from '@/context/collections-context';
 import Add from '@/assets/icons/add.svg?react';
+import { useCards } from '@/context/cards-context';
+import { Loader } from '../ui/Loader/Loader';
+import { ErrorMessage } from '../ui/Error/Error';
 
 interface Props {
   collectionId: string;
@@ -12,7 +14,7 @@ interface Props {
 
 export const Catalogue = ({ collectionId }: Props) => {
   const { addCardToCollection, collections } = useCollections();
-  const { cards } = useCards();
+  const { cards, isLoading, error } = useCards();
 
   const currentCollection = collections.find((collection) => collection.id === collectionId);
 
@@ -26,6 +28,14 @@ export const Catalogue = ({ collectionId }: Props) => {
     }),
     [addCardToCollection, collectionId],
   );
+
+  if (isLoading) {
+    return <Loader size="large" />;
+  }
+
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
 
   return (
     <div className="catalogue-container">

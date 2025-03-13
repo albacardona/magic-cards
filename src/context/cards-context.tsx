@@ -1,28 +1,25 @@
-import { getCards } from '@/api/cardApi';
+import { useCardsApi } from '@/api/cardApi';
 import type { Card } from '@/types/types';
 import { createContext, useContext, useMemo } from 'react';
-import { useQuery } from 'react-query';
 
 interface ContextTypes {
   cards: Card[] | undefined;
   isLoading: boolean;
+  error: Error | null;
 }
 
 const CardsContext = createContext<ContextTypes | undefined>(undefined);
 
 export const CardsProvider = ({ children }: React.PropsWithChildren) => {
-  const { data, isLoading } = useQuery({
-    queryKey: [getCards.name],
-    queryFn: getCards,
-    onError: (error) => console.log(error),
-  });
+  const { data: cards, isLoading, error } = useCardsApi();
 
   const value = useMemo(
     () => ({
-      cards: data?.filter((card) => card.imageUrl),
+      cards: cards?.filter((card) => card.imageUrl),
       isLoading,
+      error,
     }),
-    [data, isLoading],
+    [cards, isLoading, error],
   );
 
   return <CardsContext.Provider value={value}>{children}</CardsContext.Provider>;

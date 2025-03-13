@@ -1,19 +1,26 @@
 @use '../../../variables' as *;
 
-.large {
-  height: 250px;
-  width: 250px;
+.loader-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .large {
+    height: 250px;
+    width: 250px;
+  }
+  
+  .medium {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .small {
+    height: 40px;
+    width: 40px;
+  }
 }
 
-.medium {
-  height: 100px;
-  width: 100px;
-}
-
-.small {
-  height: 40px;
-  width: 40px;
-}
 
 .loader {
   -moz-transition: all 0.5s ease-in-out;

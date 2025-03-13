@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const useRandomCards = ({ quantity }: Props) => {
-  const { cards } = useCards();
+  const { cards, isLoading } = useCards();
   const [randomCards, setRandomCards] = useState<Card[]>([]);
 
   useEffect(() => {
@@ -22,9 +22,9 @@ export const useRandomCards = ({ quantity }: Props) => {
         }
         selectedCards.push(newElem);
       }
-      setRandomCards(selectedCards);
+      !isLoading && setRandomCards(selectedCards);
     }
-  }, [cards, quantity]);
+  }, [cards, isLoading, quantity]);
 
   return { randomCards };
 };

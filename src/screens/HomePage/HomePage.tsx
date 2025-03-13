@@ -3,16 +3,21 @@ import { useRandomCards } from '@/hooks/useRandomCards';
 import { CardItem } from '@/components/CardItem/CardItem';
 import { Loader } from '@/components/ui/Loader/Loader';
 import './HomePage.scss';
+import { ErrorMessage } from '@/components/ui/Error/Error';
 
 export const HomePage = () => {
-  const { isLoading } = useCards();
+  const { isLoading, error } = useCards();
   const { randomCards } = useRandomCards({ quantity: 3 });
 
-  return isLoading ? (
-    <div className="loader-container">
-      <Loader size="large" />
-    </div>
-  ) : (
+  if (isLoading) {
+    return <Loader size="large" />;
+  }
+
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
+
+  return (
     <div className="homepage-content">
       <div className="info">
         <h2>The magic cards collection</h2>
