@@ -14,11 +14,10 @@ export const Catalogue = ({ collectionId }: Props) => {
   const { addCardToCollection, collections } = useCollections();
   const { cards } = useCards();
 
-  const currentCollection = collections.find((c) => c.id === collectionId);
+  const currentCollection = collections.find((collection) => collection.id === collectionId);
 
-  const isCardInCollection = (cardId: string) => {
-    return currentCollection?.cards.some((card) => card.id === cardId);
-  };
+  const isCardInCollection = (cardId: string) =>
+    currentCollection?.cards.some((card) => card.id === cardId);
 
   const cardAction = useMemo(
     () => ({

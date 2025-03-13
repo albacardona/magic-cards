@@ -17,7 +17,7 @@ export const Modal = forwardRef<HTMLDivElement>((_, ref) => {
             <h4>{modalData?.title}</h4>
             <p>{modalData?.description}</p>
           </div>
-          <Button onClick={closeModal}>
+          <Button className="close-modal" onClick={closeModal}>
             <Close />
           </Button>
         </div>

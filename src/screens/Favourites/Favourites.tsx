@@ -9,16 +9,16 @@ import { Collection } from '@/components/Collection/Collection';
 
 export const Favourites = () => {
   const { collections } = useCollections();
-  const modal = useModal();
+  const catalogueModal = useModal();
 
   const favouriteCollection = useMemo(
     () => collections.filter((collection) => collection.isFavourite)[0],
     [collections],
   );
 
-  const onAddFavourites = () => {
-    modal.showModal({
-      title: 'My favourites cards',
+  const addFavourites = () => {
+    catalogueModal.showModal({
+      title: 'Catalogue',
       content: <Catalogue collectionId={favouriteCollection.id} />,
     });
   };
@@ -32,7 +32,7 @@ export const Favourites = () => {
           <h2>Favourites</h2>
           <div className="empty-favourites">
             <h3>Your favourite collection is empty. Choose some cards to add to it!</h3>
-            <Button className="add-button" onClick={onAddFavourites}>
+            <Button className="add-button" onClick={addFavourites}>
               <Add className="add" />
             </Button>
           </div>

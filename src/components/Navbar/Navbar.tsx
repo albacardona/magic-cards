@@ -1,6 +1,23 @@
 import { NavLink } from 'react-router-dom';
 import MagicLogo from '@/assets/magic-logo.svg?react';
 import './Navbar.scss';
+import { type PropsWithChildren, useState } from 'react';
+
+const LiElement = ({ children }: PropsWithChildren) => {
+  const [hover, setHover] = useState<boolean>(false);
+
+  const hoverStyle = {
+    textDecoration: hover ? 'underline' : 'none',
+    textUnderlineOffset: '24px',
+    textDecorationThickness: '2px',
+  };
+
+  return (
+    <li style={hoverStyle} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+      {children}
+    </li>
+  );
+};
 
 export const Navbar = () => {
   return (
@@ -10,12 +27,12 @@ export const Navbar = () => {
       </NavLink>
       <div className="nav-links">
         <ul>
-          <li>
+          <LiElement>
             <NavLink to="/favourites">Favourites</NavLink>
-          </li>
-          <li>
+          </LiElement>
+          <LiElement>
             <NavLink to="/my-collections">My collections</NavLink>
-          </li>
+          </LiElement>
         </ul>
       </div>
     </nav>

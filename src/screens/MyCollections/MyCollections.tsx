@@ -16,6 +16,8 @@ export const MyCollections = () => {
     [collections],
   );
 
+  const emptyCollections = useMemo(() => myCollections.length === 0, [myCollections]);
+
   const onAddCollection = () => {
     modal.showModal({
       description: 'Enter the name for your new collection',
@@ -24,18 +26,27 @@ export const MyCollections = () => {
   };
 
   return (
-    <div>
-      <h2>Collections</h2>
-      {myCollections.length > 0 ? (
-        myCollections.map((collection) => (
-          <Collection key={collection.id} collection={collection} />
-        ))
-      ) : (
+    <div className={emptyCollections ? 'my-collections' : 'my-collections has-cards'}>
+      <div className="my-collections-header">
+        <h2>Collections</h2>
+        {!emptyCollections && (
+          <Button className="add-button" onClick={onAddCollection}>
+            <Add className="add" />
+          </Button>
+        )}
+      </div>
+      {emptyCollections ? (
         <div className="empty-collections">
           <h3>You have no collection yet. Click the button to create a new one.</h3>
           <Button className="add-button" onClick={onAddCollection}>
             <Add className="add" />
           </Button>
+        </div>
+      ) : (
+        <div className="my-collections-slider">
+          {myCollections.map((collection) => (
+            <Collection key={collection.id} collection={collection} />
+          ))}
         </div>
       )}
     </div>

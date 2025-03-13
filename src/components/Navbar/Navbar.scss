@@ -41,6 +41,9 @@
       color: $text-primary-dark;
     }
   }
+  .logo-container:hover {
+    background-color: $bg-primary-dark;
+  }
 }
 
 @media (prefers-color-scheme: light) {

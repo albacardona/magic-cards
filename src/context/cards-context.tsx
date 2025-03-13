@@ -18,11 +18,10 @@ export const CardsProvider = ({ children }: React.PropsWithChildren) => {
   });
 
   const value = useMemo(
-    () =>
-      ({
-        cards: data,
-        isLoading,
-      }) satisfies ContextTypes,
+    () => ({
+      cards: data?.filter((card) => card.imageUrl),
+      isLoading,
+    }),
     [data, isLoading],
   );
 
