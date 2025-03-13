@@ -63,3 +63,9 @@
   justify-content: center;
   gap: 16px;
 }
+
+@media (prefers-color-scheme: light) {
+  .collection {
+    border: 1px solid $text-primary-light;
+  }
+}

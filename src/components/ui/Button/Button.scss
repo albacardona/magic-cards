@@ -14,23 +14,7 @@
   }
 }
 
-.button .empty {
-  background-color: transparent;
-}
-.button .primary {
-  background-color: $bg-accent-light;
-}
-.button .success {
-  background-color: $text-success-light;
-}
-.button .danger {
-  background-color: $text-danger-light;
-}
-.button .warning {
-  background-color: $text-warning-light;
-}
-
-.add-button {
+.add-button, .delete-button {
   .add {
     width: 100%;
     height: 90px;
@@ -43,5 +27,31 @@
 button:hover {
   svg {
     fill: $bg-secondary-dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .button {
+    svg {
+      path, circle {
+        stroke: $text-primary-light;
+      }
+      fill: $bg-primary-light;
+      stroke: $text-primary-light;
+    }
+  }
+
+  .add-button {
+    .add {
+      path, circle {
+        stroke: $text-primary-light;
+      }
+    }
+  }
+
+  button:hover {
+    svg {
+      fill: $bg-secondary-light;
+    }
   }
 }

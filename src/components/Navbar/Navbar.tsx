@@ -8,7 +8,7 @@ const LiElement = ({ children }: PropsWithChildren) => {
 
   const hoverStyle = {
     textDecoration: hover ? 'underline' : 'none',
-    textUnderlineOffset: '24px',
+    textUnderlineOffset: '22px',
     textDecorationThickness: '2px',
   };
 
@@ -23,7 +23,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar">
       <NavLink to="/" className="logo-container">
-        <MagicLogo />
+        <MagicLogo className="logo" />
       </NavLink>
       <div className="nav-links">
         <ul>

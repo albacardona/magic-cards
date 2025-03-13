@@ -50,10 +50,14 @@
   .navbar {
     background-color: $bg-secondary-light;
     .logo-container {
-      svg {
-        stroke: $bg-primary-dark;
-        fill: $bg-primary-dark;
+      border: 1px solid $text-primary-light;
+      .logo {
+        stroke: $text-primary-light;
+        fill: $text-primary-light;
       }
+    }
+    .logo-container:hover {
+      background-color: $bg-primary-light;
     }
     .nav-links a {
       color: $text-primary-light;

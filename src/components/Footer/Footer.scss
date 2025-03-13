@@ -16,10 +16,8 @@
   .footer {
     background-color: $bg-secondary-light;
     .logo {
-      svg {
-        stroke: $bg-primary-dark;
-        fill: $bg-primary-dark;
-      }
+      stroke: $text-primary-light;
+      fill: $text-primary-light;
     }
   }
 }

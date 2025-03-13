@@ -1,3 +1,5 @@
+@use '../../variables' as *;
+
 .catalogue-container {
   width: 100%;
   max-width: 1180px;
@@ -7,4 +9,13 @@
   gap: 24px;
   padding: 16px 0;
   overflow: scroll;
+}
+
+@media (prefers-color-scheme: light) {
+  .catalogue-container {
+    color: $text-primary-light;
+  }
+  svg {
+    stroke: $text-primary-light;
+  }
 }

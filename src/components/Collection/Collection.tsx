@@ -48,7 +48,7 @@ export const Collection = ({ collection }: Props) => {
     <div className={collectionIsFavourite ? 'collection favourite' : 'collection'}>
       {!collectionIsFavourite && (
         <Button className="delete-button" onClick={handleClickDeleteCollection}>
-          <Delete />
+          <Delete className="delete" />
         </Button>
       )}
       <div className="collection-header">

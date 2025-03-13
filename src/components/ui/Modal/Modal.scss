@@ -68,6 +68,35 @@
   svg {
     width: 32px;
     height: 32px;
-    stroke: $bg-primary-light;
+    stroke: $text-primary-dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .modal-overlay {
+    .modal-content {
+      background-color: $bg-primary-light;
+      border: 1px solid $bg-primary-dark;
+      .modal-header {
+        svg {
+          stroke: $text-primary-light;
+        }
+      }
+      svg {
+        stroke: $text-primary-light;
+      }
+      .new-collection {
+        input {
+          color: $text-primary-light;
+          background-color: $bg-primary-light;
+          -webkit-box-shadow: inset 0px 0px 5px 0px rgba(212,212,212,1);
+          -moz-box-shadow: inset 0px 0px 5px 0px rgba(212,212,212,1);
+          box-shadow: inset 0px 0px 5px 0px rgba(212,212,212,1);
+        }
+        input:focus {
+          border: 2px solid $bg-secondary-light;
+        }
+      }
+    }
   }
 }
