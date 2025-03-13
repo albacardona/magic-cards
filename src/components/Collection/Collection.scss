@@ -1,6 +1,7 @@
 @use '../../variables' as *;
 
 .collection {
+  position: relative;
   max-width: 500px;
   min-width: 500px;
   display: flex;
@@ -36,6 +37,16 @@
     overflow: scroll;
     padding: 12px;
   }
+
+  .delete-button {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    svg {
+      width: 45px;
+      height: 45px;
+    }
+  }
 }
 
 .favourite {
@@ -45,4 +56,10 @@
   height: 100%;
   padding: 24px;
   gap: 32px;
+}
+
+.modal-confirmation {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }

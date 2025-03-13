@@ -6,8 +6,10 @@ import Remove from '@/assets/icons/remove.svg?react';
 import { useCollections } from '@/context/collections-context';
 import { Button } from '../ui/Button/Button';
 import Add from '@/assets/icons/add.svg?react';
+import Delete from '@/assets/icons/delete.svg?react';
 import { useModal } from '@/context/modal-context';
 import { Catalogue } from '../Catalogue/Catalogue';
+import { ConfirmDeletion } from './CollectionConfirmDeletion';
 
 interface Props {
   collection: CollectionTypes;
@@ -16,6 +18,7 @@ interface Props {
 export const Collection = ({ collection }: Props) => {
   const { removeCardFromCollection } = useCollections();
   const catalogueModal = useModal();
+  const deleteModal = useModal();
 
   const cardAction = useMemo(
     () => ({
@@ -25,6 +28,8 @@ export const Collection = ({ collection }: Props) => {
     [removeCardFromCollection, collection],
   );
 
+  const collectionIsFavourite = useMemo(() => collection.isFavourite, [collection]);
+
   const addCardsToCollection = () => {
     catalogueModal.showModal({
       title: 'Catalogue',
@@ -32,8 +37,20 @@ export const Collection = ({ collection }: Props) => {
     });
   };
 
+  const handleClickDeleteCollection = () => {
+    deleteModal.showModal({
+      description: 'Are you sure you want to delete this collection?',
+      content: <ConfirmDeletion collectionId={collection.id} />,
+    });
+  };
+
   return (
-    <div className={collection.isFavourite ? 'collection favourite' : 'collection'}>
+    <div className={collectionIsFavourite ? 'collection favourite' : 'collection'}>
+      {!collectionIsFavourite && (
+        <Button className="delete-button" onClick={handleClickDeleteCollection}>
+          <Delete />
+        </Button>
+      )}
       <div className="collection-header">
         <h2>{collection?.name}</h2>
         <Button className="add-button" onClick={addCardsToCollection}>
